@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Land Le Le Mera</title>
+  <meta name="description" content="A simple, stylish single-page site that says ‘Land le le mera’." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container" role="main">
+    <div class="badge" aria-hidden="true">
+      <span>⚡</span>
+      <span>ACCENTURE</span>
+    </div>
+
+    <h1>Land le le mera</h1>
+    <p class="subtitle">(.)(.).</p>
+
+    <p class="hin" lang="hi" aria-label="Hindi rendering">लैंड ले ले मेरा</p>
+
+    <div class="cta">
+      <button class="btn btn-primary" onclick="copyText()">Copy Text</button>
+      <button class="btn btn-ghost" onclick="toggleHindi()">Toggle Hindi</button>
+    </div>
+
+    <p class="note">Aur kya Chahie Bol</p>
+
+    <footer>© <span id="year"></span> Your Site</footer>
+  </main>
+
+  <script>
+    const hin = document.querySelector('.hin');
+    function toggleHindi(){
+      hin.style.display = (hin.style.display === 'none') ? 'block' : 'none';
+    }
+    function copyText(){
+      const text = 'Land le le mera';
+      navigator.clipboard.writeText(text)
+        .then(() => {
+          const btn = document.querySelector('.btn-primary');
+          const prev = btn.textContent;
+          btn.textContent = 'Copied!';
+          setTimeout(() => btn.textContent = prev, 1200);
+        })
+        .catch(()=> alert('Copy failed.'));
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
